@@ -13,6 +13,7 @@ $ git clone git@github.com:heroku/ruby-getting-started.git
 $ cd ruby-getting-started
 $ bundle install
 $ rake db:create db:migrate
+$ . envfile
 $ foreman start web
 ```
 
@@ -32,4 +33,3 @@ $ heroku open
 For more information about using Ruby on Heroku, see these Dev Center articles:
 
 - [Ruby on Heroku](https://devcenter.heroku.com/categories/ruby)
-
