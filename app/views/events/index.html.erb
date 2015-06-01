@@ -1,0 +1,30 @@
+<center>
+<h1> Squash calendar by Ben   Borchard </h1>
+</center>
+<br>
+
+<p>
+  <%= link_to 'Register Time', new_event_path, :id => 'new_event', :remote => true %>
+</p>
+
+<script>
+  
+</script>
+<div>
+  <div id='calendar'>
+  </div>
+</div>
+<div id = "desc_dialog" class="dialog" style ="display:none;">
+  <div id = "event_desc">
+  </div>
+  <br/>
+  <br/>
+  <div id = "event_actions">
+    <span id = "edit_event"></span>
+    <span id = "delete_event"></span>
+  </div>
+</div>
+<div id = "create_event_dialog" class="dialog" style ="display:none;">
+  <div id = "create_event">
+  </div>
+</div>

@@ -1,0 +1,18 @@
+
+
+
+
+
+$('#create_event').html(
+	'<%= escape_javascript(render :partial => 'events/fnew') %>'
+);
+
+console.log('in new.js')
+console.log('<%= escape_javascript(render :partial => 'events/fnew') %>')
+
+$('#create_event_dialog').dialog({
+	title: 'New Event',
+	modal: true,
+	width: 500,
+	close: function(event, ui) { $('#create_event_dialog').dialog('destroy') }
+});

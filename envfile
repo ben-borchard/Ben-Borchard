@@ -1,0 +1,9 @@
+export rh=~/dev/web/heroku/ruby-getting-started/
+export views=${rh}app/views/
+export conts=${rh}app/controllers/
+export mods=${rh}app/models/
+export js=${rh}app/assets/javascripts/
+export css=${rh}app/assets/stylesheets/
+export deps=${rh}vendor/assets/components/
+
+source /home/ben/.rvm/scripts/rvm
