@@ -1,0 +1,13 @@
+
+<% if @article.errors.any? %>
+	<div style="color:red">
+		<div>
+			The article contains <%= pluralize(@article.errors.count, "error") %>.
+		</div>
+		<ul>
+			<%= @article.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>	
+	</div>
+<% end %>

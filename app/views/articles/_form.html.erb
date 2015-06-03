@@ -1,0 +1,21 @@
+<%= form_for @article do |a| %>
+
+	<div>
+		<%= render 'shared/article_error_messages' %>
+	</div>
+	
+	<p>
+		<%= a.label :title %><br>
+		<%= a.text_field :title %>
+	</p>
+
+	<p>
+		<%= a.label :text %><br>
+		<%= a.text_area :text %>
+	</p>
+
+	<p>
+		<%= a.submit %>
+	</p>
+
+<% end %>

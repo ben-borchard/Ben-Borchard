@@ -38,4 +38,9 @@ module SessionsHelper
 		!current_user.nil?
 	end
 
+	def user_is_admin?
+		return false if current_user.nil?
+		current_user.priv_level == 1
+	end
+
 end

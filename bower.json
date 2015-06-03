@@ -1,0 +1,24 @@
+{
+  "name": "ruby-getting-started",
+  "version": "0.0.0",
+  "homepage": "https://github.com/heroku/ruby-getting-started",
+  "authors": [
+    "<em>Ben Borchard</em> <<em>ben.borchard@gmail.com</em>>"
+  ],
+  "description": "Calendar for squash games",
+  "main": "Procfile",
+  "keywords": [
+    "squash"
+  ],
+  "license": "none",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependenies": {
+    "fullcalendar": "~2.3.1"
+  }
+}

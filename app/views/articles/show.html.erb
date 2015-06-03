@@ -1,0 +1,29 @@
+
+<h1>Posts:</h1>
+
+<p>
+	<b>Title:</b>
+	<%= @article.title %>
+</p>
+
+<p>
+	<b>Text:</b>
+	<%= @article.text %>
+</p>
+
+<h2>Comments:</h2>
+
+<%= render 'comments/comments' %>
+
+<h3>Add a commment:</h3>
+
+<%= render 'comments/form' %>
+
+<% if user_is_admin? %>
+	<%= link_to 'Update', edit_article_path(@article) %>
+	<%= link_to 'Destroy', article_path(@article), 
+						  method: :delete, 
+						  data: { confirm: 'Are you sure?' }  %>
+<% end %>
+
+<%= link_to 'Back', articles_path %>

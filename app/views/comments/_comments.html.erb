@@ -1,0 +1,21 @@
+<%= @article.comments.each do |comment| %>
+
+	<p>
+		<b>Poster:</b>
+		<%= comment.name %>
+	</p>
+
+	<p>
+		<b>Comment:</b>
+		<%= comment.body %>
+	</p>
+
+	<% if user_is_admin? %>
+		<p>
+			<%= link_to 'Remove Comment', [comment.article, comment],
+										   method: :delete,
+										   data: { confirm: 'Are you sure' } %>
+		</p>
+	<% end %>
+
+<% end %>
