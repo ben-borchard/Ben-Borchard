@@ -1,3 +1,32 @@
 // Place all the styles related to the articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.art-info {
+	font-size:12px;
+	color:#888888;
+}
+
+.art-body {
+	font-family: "Courier New", Courier, monospace;
+	font-size: 11px;
+}
+
+.art-img {
+	height: 150px;
+	padding-right: 50px;
+}
+
+.art-item {
+	display:block;
+}
+
+.articles {
+  list-style: none;
+  padding: 0;
+  li {
+  	clear: both;
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}

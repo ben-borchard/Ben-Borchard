@@ -1,0 +1,27 @@
+<li >
+
+	<%= image_tag( (article.picture.url if article.picture?), :class => "pull-left art-img") %>
+
+	<div class="art-item">
+		<h2>
+			<font face="Century Gothic"> 
+				<%= link_to article.title, article_path(article), class: "escape-link" %>
+			</font>
+		</h2>
+
+		<p>
+			<span class="art-info"> 
+			<span class="glyphicon glyphicon-time"></span>
+			Posted <%= time_ago_in_words(article.created_at) %> ago</span>
+		</p>
+
+		<% if user_is_admin? %>
+			<p>
+			<%= link_to 'Update', edit_article_path(article) %> 
+			<%= link_to 'Destroy', article_path(article), 
+								   method: :delete, 
+								   data: { confirm: 'Are you sure?'}  %>
+			</p>
+		<% end %>
+	</div>
+</li>

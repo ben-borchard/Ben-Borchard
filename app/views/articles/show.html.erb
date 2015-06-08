@@ -1,29 +1,47 @@
 
-<h1>Posts:</h1>
+
 
 <p>
-	<b>Title:</b>
-	<%= @article.title %>
+	<%= image_tag((@article.picture.url if @article.picture?), class: "img-rounded pull-right", style: "padding-left:20px;") %>
 </p>
 
 <p>
-	<b>Text:</b>
-	<%= @article.text %>
+	<h2> <font face="Century Gothic"><%= @article.title %></font> </h2>
 </p>
 
-<h2>Comments:</h2>
+<div class="art-contents">
+	<p>
+		<%= render html: @article.text.html_safe %>
+	</p>
+</div>
 
-<%= render 'comments/comments' %>
+<p class="art-info">
+	Posted <%= time_ago_in_words(@article.created_at.strftime('%d/%m/%Y %H:%M')) %> ago
+</p>
 
-<h3>Add a commment:</h3>
+<div class="div-top">
+	<h4>Comments (<span id="num-comments"><%= @article.comments.count %></span>):</h4>
 
-<%= render 'comments/form' %>
+	<%= render 'comments/form' %>
+
+	<% if @article.comments.any? %>
+
+		<ol class="comments list-group">
+			<%= render @comments %>
+		</ol>
+
+		<%= will_paginate @comments %>
+
+	<% end %>
+	
+
+</div>
 
 <% if user_is_admin? %>
 	<%= link_to 'Update', edit_article_path(@article) %>
 	<%= link_to 'Destroy', article_path(@article), 
-						  method: :delete, 
-						  data: { confirm: 'Are you sure?' }  %>
+						   method: :delete, 
+						   data: { confirm: 'Are you sure?' }  %>
 <% end %>
 
 <%= link_to 'Back', articles_path %>

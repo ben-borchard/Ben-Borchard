@@ -1,21 +1,26 @@
-<%= form_for @article do |a| %>
+<%= form_for(@article, html: { multipart: true }) do |a| %>
 
 	<div>
-		<%= render 'shared/article_error_messages' %>
+		<%= render 'error_messages' %>
 	</div>
 	
-	<p>
+	<div class="form-group">
 		<%= a.label :title %><br>
-		<%= a.text_field :title %>
-	</p>
+		<%= a.text_field :title, cols: "50" %>
+	</div>
 
-	<p>
+	<div class="form-group picture">
+		<%= a.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+	</div>
+
+	<div class="form-group">
 		<%= a.label :text %><br>
-		<%= a.text_area :text %>
+		<%= a.text_area :text, size: "140x20",
+							   class: "art-body" %>
 	</p>
 
 	<p>
-		<%= a.submit %>
+		<%= a.submit "Post", class: "btn btn-primary" %>
 	</p>
 
 <% end %>

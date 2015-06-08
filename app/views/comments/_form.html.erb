@@ -1,24 +1,39 @@
-<%= form_for ([@article, @article.comments.build]) do |f| %>
 
-	<% if not(logged_in?) %>
-		<p>
-			<%= f.label :name %><br>
-			<%= f.text_field :name %>
-		</p>
-	<% else %>
-		<p>
-			<%= f.label :name %><br>
-			<%= f.text_field :name, disabled: true, value: current_user.name %>
-		</p>
-	<% end %>
+<div class="row">
+	<div class="col-md-4">
+		<p class="h5">Add Comment:<p>
+		<%= form_for([@article, @article.comments.build], remote: true) do |f| %>
 
-	<p>
-		<%= f.label :body %><br>
-		<%= f.text_area :body %>
-	</p>
+			<% if not(logged_in?) %>
+				<%= f.text_field :name, cols: "50", 
+										placeholder: "Your Name",
+										id: "post-author",
+										class: "form-control" %>
+			<% else %>
+				<%= f.text_field :name, disabled: true, 
+										value: current_user.name, 
+										cols: "50",
+										class: "form-control" %>
+			<% end %>
+			<div>
 
-	<p>
-		<%= f.submit %>
-	</p>
+				<div>
+					<%= f.text_area :body, rows: "3", 
+										   placeholder: "What do you think about the article?",
+										   id: "post-body",
+										   style: "overflow:hidden;", 
+										   class: "form-control" %>
 
-<% end %>
+				</div>
+
+				<div>	
+					<%= f.submit "Post", class: "btn btn-primary btn-xs pull-right hide disabled", 
+										 id: "post-btn" %>
+					<span class="btn btn-default btn-xs hide pull-right", id="post-btn-cancel">Cancel</span>
+				</div>
+
+			</div>
+
+		<% end %>
+	</div>
+</div>

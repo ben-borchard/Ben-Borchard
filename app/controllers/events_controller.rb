@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
 
+	skip_before_action :require_permissions
+
 	def new
 
 		Rails.logger.debug(params[:start])

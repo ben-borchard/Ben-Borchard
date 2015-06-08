@@ -1,35 +1,14 @@
-<h1>All Articles</h1>
+<h1>
+	<font face="Century Gothic"> All Posts (<%= @articles.count %>) </font>
+</h1>
 
 <% if user_is_admin? %>
 	<%= link_to 'New Article', new_article_path %>
 <% end %>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th> Title: </th>
-			<th> Text: </th>
-			<th colspan="a"></th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<% @articles.each do |a| %>
-			<tr>
-				<td> <%= a.title %> </td>
-				<td> <%= a.text %> </td>
-				<td>
-					<%= link_to 'Show', article_path(a) %>  
-
-					<% if user_is_admin? %>
-						<%= link_to 'Update', edit_article_path(a) %>
-						<%= link_to 'Destroy', article_path(a), 
-											   method: :delete, 
-											   data: { confirm: 'Are you sure?'}  %>
-					<% end %>
-				</td>
-			</tr>
-		<% end %>
-	</tbody>
-</table>
+<%= will_paginate %>
+<ol class="articles">
+	<%= render @articles %>
+</ol>
+<%= will_paginate %>
 

@@ -1,4 +1,4 @@
-export rh=~/dev/web/heroku/RubyOnRailsApp/
+export rh=~/dev/web/heroku/Ben-Borchard/
 export views=${rh}app/views/
 export conts=${rh}app/controllers/
 export mods=${rh}app/models/

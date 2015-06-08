@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController 
 
+	skip_before_action :require_permissions, only: [:create]
+
 	def create
 		@article = Article.find(params[:article_id])
 		@comment = @article.comments.new(comment_params)
@@ -9,23 +11,21 @@ class CommentsController < ApplicationController
 			@comment.name = current_user.name
 		end
 		
-		@comment.save
-
-		redirect_to article_path(@article)
+		if (@comment.save)
+			render :partial => "comments/comment", :locals => {:comment => @comment}
+		else
+			render :js => 'alert("error saving comment");'
+		end
 		
 	end
 
 	def destroy
 
-		if user_is_admin?
-			@article = Article.find(params[:article_id])
-			@comment = @article.comments.find(params[:id])
+		@article = Article.find(params[:article_id])
+		@comment = @article.comments.find(params[:id])
 
-			@comment.destroy
-			redirect_to(@article)
-		else
-			render 'shared/access_denied'
-		end
+		@comment.destroy
+		redirect_to(@article)
 
 	end
 

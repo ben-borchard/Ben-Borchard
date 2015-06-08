@@ -1,0 +1,19 @@
+
+
+<% if not(comment.id.nil?) %>
+	<li class="list-group-item" >
+		<p>
+			<span style="white-space:pre-wrap;"><%= comment.body %></span>
+			<br>
+			<span class="post-info"> Posted <%= time_ago_in_words(comment.created_at)%> ago by <%= comment.name %></span>
+		</p>
+
+		<% if user_is_admin? %>
+			<p>
+				<%= link_to 'Remove Comment', [comment.article, comment],
+											   method: :delete,
+											   data: { confirm: 'Are you sure' } %>
+			</p>
+		<% end %>	
+	</li>
+<% end %>
